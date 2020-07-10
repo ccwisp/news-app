@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import Article from './Article';
-
 import './App.css';
-
 import TopMenu from './TopMenu';
-import { Header } from 'semantic-ui-react';
 import ArticleContainer from './ArticleContainer';
 
 class App extends Component {

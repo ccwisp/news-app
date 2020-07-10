@@ -1,6 +1,5 @@
-import { Card, Header } from 'semantic-ui-react';
 import React, { Component } from 'react';
-import { getLatest, loadSource, getSource, getByQuery } from './client';
+import { getLatest, getSource, getByQuery } from './client';
 import { Route, Redirect, Switch, Link } from 'react-router-dom';
 
 import Article from './Article';
