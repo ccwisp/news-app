@@ -5,34 +5,7 @@ import { Route, Redirect, Switch, Link } from 'react-router-dom';
 
 import Article from './Article';
 
-class CategoryPage extends Component {
-  state = { News: [], source: this.props.source };
-
-  loadFromSource(source) {
-    getSource(source, (data) => {
-      const newSources = data.articles;
-
-      this.setState({ News: newSources }, () => {});
-    });
-  }
-
-  componentDidMount() {
-    this.loadFromSource(this.state.source);
-  }
-  render() {
-    let NewsList = this.state.News.map((article) => (
-      <Article
-        key={article.id}
-        href={article.url}
-        header={article.source.name}
-        description={article.description}
-        meta={article.author}
-      />
-    ));
-
-    return <div className='App'>{NewsList}</div>;
-  }
-}
+const matchUrl = window.location.pathname;
 
 class ArticleContainer extends Component {
   state = {
@@ -96,7 +69,7 @@ class ArticleContainer extends Component {
           />
           <Route
             exact
-            path='/categories/:sourceId'
+            path={`${matchUrl}/categories/:sourceId`}
             render={({ match }) => {
               this.loadFromSource(match.params.sourceId);
               return [
@@ -108,7 +81,7 @@ class ArticleContainer extends Component {
             }}
           />
           <Route
-            path='/search/:searchId'
+            path={`${matchUrl}/search/:searchId`}
             render={({ match }) => {
               this.loadFromQuery(match.params.searchId);
               return [
@@ -121,7 +94,7 @@ class ArticleContainer extends Component {
           />
           <Route
             exact
-            path='/search'
+            path={`${matchUrl}/search`}
             render={() => {
               return [<Redirect to='/'></Redirect>];
             }}
