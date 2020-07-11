@@ -59,7 +59,7 @@ export default class TopMenu extends Component {
               marginTop: '5px',
               marginLeft: '10px',
               fontFamily: 'Lucida Console',
-              fontSize: '200%',
+              fontSize: '240%',
               fontWeight: '900',
             }}
           >
