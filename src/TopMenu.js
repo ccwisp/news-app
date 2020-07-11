@@ -18,8 +18,11 @@ export default class TopMenu extends Component {
 
   loadSources() {
     getSources((data) => {
-      const randomNum = Math.random() * (33 - 0) + 0;
-      const newSources = data.sources.slice(randomNum, 5 + randomNum);
+      // Shuffle array
+      const shuffled = data.sources.sort(() => 0.5 - Math.random());
+
+      // Get sub-array of first 6 elements after shuffled
+      const newSources = shuffled.slice(0, 6);
 
       this.setState({ sources: newSources }, () => {});
     });
