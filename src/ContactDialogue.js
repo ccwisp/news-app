@@ -55,7 +55,7 @@ class ContactDialogue extends Component {
         <Modal
           centered
           trigger={
-            <Button basic color='gray'>
+            <Button basic color='blue'>
               Contact us
             </Button>
           }

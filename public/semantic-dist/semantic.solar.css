@@ -40206,16 +40206,5 @@ body.pushable > .pusher {
          Site Overrides
 *******************************/
 
-.ui.card { display: inline-block;  }
 
-.ui.card {
-  display: inline-block;
-  margin: 10px;
-}
-
-.ui.card,
-.ui.cards>.card {
-  background-color: #1f2531;
-  color: white;
-}
 
