@@ -10,12 +10,6 @@ export default class TopMenu extends Component {
     searchName: '',
   };
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-
-  handleSearchChange(evt) {
-    this.setState({ searchName: evt.target.value });
-  }
-
   loadSources() {
     getSources((data) => {
       // Shuffle array
@@ -87,7 +81,7 @@ export default class TopMenu extends Component {
               to={`/search/${this.state.searchName}`}
               class='ui icon button'
             >
-              <i aria-hidden='true' class='search icon'></i>
+              <i aria-hidden='true' class='search icon' />
             </Button>
           </div>
 

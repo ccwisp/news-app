@@ -29,8 +29,6 @@ class ContactDialogue extends Component {
       },
       notSent: false,
     });
-
-    // window.alert('Success');
   };
 
   onInputChange = (evt) => {
