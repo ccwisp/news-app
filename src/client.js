@@ -1,4 +1,4 @@
-const API_KEY = '59062f271c514de2bd52c82761065160';
+const API_KEY = '6909bb9ae04e45d38a442bd691f55fc4';
 
 function getSources(success) {
   return fetch(`https://newsapi.org/v2/sources?apiKey=${API_KEY}`, {

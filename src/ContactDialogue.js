@@ -54,7 +54,11 @@ class ContactDialogue extends Component {
       return (
         <Modal
           centered
-          trigger={<Button color='black'>Contact us</Button>}
+          trigger={
+            <Button basic color='gray'>
+              Contact us
+            </Button>
+          }
           closeIcon
         >
           <Modal.Header>Send us a Message</Modal.Header>

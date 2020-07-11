@@ -7,7 +7,7 @@ import { getSources } from './client';
 export default class TopMenu extends Component {
   state = {
     sources: [],
-    searchName: 'valod',
+    searchName: '',
   };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
@@ -24,7 +24,7 @@ export default class TopMenu extends Component {
     getSources((data) => {
       const randomNum = Math.random() * (33 - 0) + 0;
       const newSources = data.sources.slice(randomNum, 5 + randomNum);
-      console.log(newSources);
+
       this.setState({ sources: newSources }, () => {});
     });
   }
@@ -51,15 +51,16 @@ export default class TopMenu extends Component {
     ));
 
     return (
-      <div className='ui top attached menu'>
+      <div className='ui top attached menu' style={{ height: '70px' }}>
         <Link to='/'>
           <h1
             className='ui black header'
             style={{
-              marginTop: '10px',
+              marginTop: '5px',
               marginLeft: '10px',
               fontFamily: 'Lucida Console',
-              fontSize: '300%',
+              fontSize: '200%',
+              fontWeight: '900',
             }}
           >
             News App
@@ -69,9 +70,8 @@ export default class TopMenu extends Component {
         <Divider />
 
         <Menu
-          inverted
-          fixed
-          compact
+          stackable
+          borderless
           style={{ marginLeft: '20px', marginRight: '20px' }}
         >
           {sourceList}
@@ -94,7 +94,7 @@ export default class TopMenu extends Component {
               <i aria-hidden='true' class='search icon'></i>
             </Button>
           </div>
-          <Divider />
+
           <ContactDialogue />
         </div>
       </div>

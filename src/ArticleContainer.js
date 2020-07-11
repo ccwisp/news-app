@@ -1,99 +1,45 @@
 import React, { Component } from 'react';
-import { getLatest, getSource, getByQuery } from './client';
 import { Route, Redirect, Switch, Link } from 'react-router-dom';
 
-import Article from './Article';
+import { v4 as uuid } from 'uuid';
 
-const matchUrl = window.location.pathname;
+import LatestNews from './LatestNews';
+import SourceNews from './SourceNews';
+import SearchedNews from './SearchedNews';
 
 class ArticleContainer extends Component {
-  state = {
-    News: [],
-  };
-
-  loadLatestNews() {
-    getLatest((data) => {
-      const newSources = data.articles.splice(2, 22);
-
-      this.setState({ News: newSources }, () => {});
-    });
-  }
-
-  loadFromSource(source) {
-    getSource(source, (data) => {
-      const newSources = data.articles;
-
-      this.setState({ News: newSources }, () => {});
-    });
-  }
-
-  loadFromQuery(query) {
-    getByQuery(query, (data) => {
-      const newSources = data.articles;
-
-      this.setState({ News: newSources }, () => {});
-    });
-  }
-
-  componentDidMount() {
-    this.loadLatestNews();
-  }
-
   render() {
-    let NewsList = this.state.News.map((article) => (
-      <Article
-        key={article.id}
-        href={article.url}
-        header={article.source.name}
-        description={article.description}
-        meta={article.author}
-      />
-    ));
-
     return (
       <div className='App'>
         <Switch>
           <Route
             exact
-            path='/'
-            render={() => {
-              this.loadLatestNews();
-              return [
-                <div className='ui segment>'>
-                  <h1 class='ui white header'>Latest News</h1>
-                </div>,
-                NewsList,
-              ];
-            }}
+            path={`/`}
+            render={(...props) => <LatestNews {...props} key={uuid()} />}
+          />
+          <Route
+            path={`/categories/:sourceId`}
+            render={({ match }, props) => (
+              <SourceNews
+                {...props}
+                key={uuid()}
+                source={match.params.sourceId}
+              />
+            )}
+          />
+          <Route
+            path={`/search/:searchId`}
+            render={({ match }, props) => (
+              <SearchedNews
+                {...props}
+                key={uuid()}
+                query={match.params.searchId}
+              />
+            )}
           />
           <Route
             exact
-            path={`${matchUrl}/categories/:sourceId`}
-            render={({ match }) => {
-              this.loadFromSource(match.params.sourceId);
-              return [
-                <div className='ui segment>'>
-                  <h1 class='ui white header'>Showing selected News</h1>
-                </div>,
-                NewsList,
-              ];
-            }}
-          />
-          <Route
-            path={`${matchUrl}/search/:searchId`}
-            render={({ match }) => {
-              this.loadFromQuery(match.params.searchId);
-              return [
-                <div className='ui segment>'>
-                  <h1 class='ui white header'>Showing filtered News</h1>
-                </div>,
-                NewsList,
-              ];
-            }}
-          />
-          <Route
-            exact
-            path={`${matchUrl}/search`}
+            path={`/search`}
             render={() => {
               return [<Redirect to='/'></Redirect>];
             }}

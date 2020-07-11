@@ -3,17 +3,19 @@
   background-color: #282c34;
 }
 .ui.white.header {
-  color: antiquewhite;
+  color: rgba(40, 94, 243, 0.664);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.ui.card {
+  display: inline-block;
+  margin: 10px;
 }
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
