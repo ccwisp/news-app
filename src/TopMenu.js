@@ -12,12 +12,8 @@ export default class TopMenu extends Component {
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
-  shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
-
-      [array[i], array[j]] = [array[j], array[i]];
-    }
+  handleSearchChange(evt) {
+    this.setState({ searchName: evt.target.value });
   }
 
   loadSources() {
@@ -33,9 +29,6 @@ export default class TopMenu extends Component {
     this.loadSources();
   }
 
-  handleSearchChange(evt) {
-    this.setState({ searchName: evt.target.value });
-  }
   render() {
     const { activeItem } = this.state;
     const sourceList = this.state.sources.map((source) => (
