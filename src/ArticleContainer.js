@@ -6,6 +6,7 @@ import { v4 as uuid } from 'uuid';
 import LatestNews from './LatestNews';
 import SourceNews from './SourceNews';
 import SearchedNews from './SearchedNews';
+import SearchedAndFilteredNews from './SearchedAndFilteredNews';
 import ErrorPage from './ErrorPage';
 
 class ArticleContainer extends Component {
@@ -20,6 +21,18 @@ class ArticleContainer extends Component {
             render={(...props) => <LatestNews {...props} key={uuid()} />}
           />
           <Redirect exact from='/search/' to='/' />
+
+          <Route
+            path={`/search/filters/:filters/:searchId`}
+            render={({ match }, props) => (
+              <SearchedAndFilteredNews
+                {...props}
+                key={uuid()}
+                sources={match.params.filters}
+                query={match.params.searchId}
+              />
+            )}
+          />
           <Route
             path={`/categories/:sourceId`}
             render={({ match }, props) => (

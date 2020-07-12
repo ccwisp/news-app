@@ -56,6 +56,20 @@ function getSource(source, success) {
     .then(success);
 }
 
+function getByExactSources(query, sources, success) {
+  return fetch(
+    `https://newsapi.org/v2/everything?q=${query}&sources=${sources}&apiKey=${API_KEY}`,
+    {
+      headers: {
+        Accept: 'application/json',
+      },
+    }
+  )
+    .then(checkStatus)
+    .then(parseJSON)
+    .then(success);
+}
+
 function checkStatus(response) {
   // Error handling
   if (response.status >= 200 && response.status < 300) {
@@ -74,4 +88,4 @@ function parseJSON(response) {
   return response.json();
 }
 
-export { getSources, getLatest, getSource, getByQuery };
+export { getSources, getLatest, getSource, getByQuery, getByExactSources };

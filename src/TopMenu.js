@@ -3,11 +3,13 @@ import { Menu, Divider, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import ContactDialogue from './ContactDialogue';
 import { getSources } from './client';
+import CategorySelector from './CategorySelector';
 
 export default class TopMenu extends Component {
   state = {
     sources: [],
     searchName: '',
+    selectedSources: [],
   };
 
   loadSources() {
@@ -21,6 +23,10 @@ export default class TopMenu extends Component {
       this.setState({ sources: newSources }, () => {});
     });
   }
+
+  sendSources = (value) => {
+    this.setState({ selectedSources: value });
+  };
 
   componentDidMount() {
     this.loadSources();
@@ -41,7 +47,7 @@ export default class TopMenu extends Component {
     ));
 
     return (
-      <div className='ui top attached menu' style={{ height: '70px' }}>
+      <div className='ui top attached menu' style={{ height: '6 0px' }}>
         <Link to='/'>
           <h1
             className='ui black header'
@@ -76,15 +82,22 @@ export default class TopMenu extends Component {
                 this.setState({ searchName: evt.target.value })
               }
             />
+
             <Button
               as={Link}
-              to={`/search/${this.state.searchName}`}
+              to={
+                this.state.selectedSources.length
+                  ? `/search/filters/${this.state.selectedSources.join()}/${
+                      this.state.searchName
+                    }`
+                  : `/search/${this.state.searchName}`
+              }
               class='ui icon button'
             >
               <i aria-hidden='true' class='search icon' />
             </Button>
           </div>
-
+          <CategorySelector sendSources={this.sendSources} />
           <ContactDialogue />
         </div>
       </div>
