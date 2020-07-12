@@ -3,10 +3,12 @@
   background-color: #282c34;
 }
 .ui.white.header {
-  color: rgba(40, 94, 243, 0.664);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+}
+.ui.header {
+  color: #586e75;
 }
 
 .ui.card {

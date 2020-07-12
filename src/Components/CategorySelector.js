@@ -44,7 +44,7 @@ export default class CategorySelector extends Component {
         onChange={this.handleChange}
         onSearchChange={this.handleSearchChange}
         options={sourceOptions}
-        placeholder='State'
+        placeholder='Filter by sources'
         search
         searchQuery={searchQuery}
         selection
