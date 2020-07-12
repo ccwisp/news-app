@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 
-import { getByQuery } from './client';
+import { getSource } from '../client';
 import { Card } from 'semantic-ui-react';
-
-class SearchedNews extends Component {
+class SourceNews extends Component {
   state = {
     News: [],
-    query: this.props.query,
+    source: this.props.source,
   };
 
-  loadFromQuery(query) {
-    getByQuery(query, (data) => {
+  loadFromSource(source) {
+    getSource(source, (data) => {
       const newSources = data.articles;
 
       this.setState({ News: newSources }, () => {});
@@ -18,7 +17,7 @@ class SearchedNews extends Component {
   }
 
   componentDidMount() {
-    this.loadFromQuery(this.state.query);
+    this.loadFromSource(this.state.source);
   }
 
   render() {
@@ -37,7 +36,7 @@ class SearchedNews extends Component {
       <div className='ui segment'>
         {' '}
         <div className='ui segment>'>
-          <h1 class='ui white header'>Showing filtered news</h1>
+          <h1 class='ui white header'>Showing selected news</h1>
         </div>
         <div class='ui divider'></div>
         {NewsList}
@@ -46,4 +45,4 @@ class SearchedNews extends Component {
   }
 }
 
-export default SearchedNews;
+export default SourceNews;

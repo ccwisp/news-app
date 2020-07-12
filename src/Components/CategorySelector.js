@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Dropdown } from 'semantic-ui-react';
-import { getSources } from './client';
+import { getSources } from '../client';
 
 export default class CategorySelector extends Component {
   state = {

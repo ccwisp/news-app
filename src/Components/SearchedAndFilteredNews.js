@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getByExactSources } from './client';
+import { getByExactSources } from '../client';
 import { Card } from 'semantic-ui-react';
 
 class SearchedAndFilteredNews extends Component {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getLatest } from './client';
+import { getLatest } from '../client';
 import { Card } from 'semantic-ui-react';
 
 class LatestNews extends Component {

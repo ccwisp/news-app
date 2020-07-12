@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Menu, Divider, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import ContactDialogue from './ContactDialogue';
-import { getSources } from './client';
+import { getSources } from '../client';
 import CategorySelector from './CategorySelector';
 
 export default class TopMenu extends Component {

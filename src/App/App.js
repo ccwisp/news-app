@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import TopMenu from './TopMenu';
-import ArticleContainer from './ArticleContainer';
+import TopMenu from '../Components/TopMenu';
+import ArticleContainer from '../Components/ArticleContainer';
 
 function App() {
   return (

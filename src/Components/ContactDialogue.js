@@ -100,7 +100,7 @@ class ContactDialogue extends Component {
             </Form>
           </Modal.Content>
           <Modal.Actions>
-            <Button color='green' onClick={this.onFormSubmit}>
+            <Button style={{ color: '586E75' }} onClick={this.onFormSubmit}>
               <Icon name='send  ' /> Submit
             </Button>
           </Modal.Actions>
